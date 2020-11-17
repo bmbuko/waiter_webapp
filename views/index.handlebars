@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <h5 class="text-white h4">Collapsed content</h5>
+        <span class="text-muted">Toggleable via the navbar brand.</span>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+        aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+
+
+  <div class="container">
+
+    <h1 class="header">Vigilant-Vegan bistro</h1>
+
+    
+    <h2>enter your name to the url for selecting the days you wish to work on</h2>
+    <form action="/waiter/{{this.name}}" method="POST">
+    
+      
+      </div>
+      <div class="waiters name">
+        
+        {{!-- <label for="name">Name: </label>
+        <input type="checkbox" name="days" class="check">Sunday
+        <input type="checkbox" name="days" class="check">Monday
+        <input type="checkbox" name="days" class="check">Tuesday
+        <input type="checkbox" name="days" class="check">Wednesday
+        <input type="checkbox" name="days" class="check">Thursday
+        <input type="checkbox" name="days" class="check">Friday
+        <input type="checkbox" name="days" class="check">Saturday --}}
+
+
+      </div>
+
+
+
+
+      <div class="message">
+
+
+      </div>
+      <div class="submit">
+        <div class="days">
+          <a href="/waiters">days</a>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+</body>
+
+</html>
