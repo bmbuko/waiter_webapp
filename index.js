@@ -22,32 +22,63 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
+
   res.render('index')
 })
 
 app.get('/waiter/:username', async (req, res) => {
   const name = req.params.username;
+  const allSevenDays = await waiterAvailability.allDays()
   console.log(name)
-  //const name=req.body.names
 
-  //const day = req.body.days
-  //console.log(day)
- // const emp = await waiterAvailability.getWaiter(name)
-  //const dId = await waiterAvailability.getIds(name, day)
   res.render('waiter', {
-    waiters: name
+    username: name,
+    allSevenDays
 
   })
 })
-
-app.get('/waiter/',(req,res)=>{
+// });
+app.post('/waiter/:username', async (req, res) => {
   const name = req.params.username;
-  console.log(name)
-  //const name=req.bo
-res.render('waiter', {
-  waiters: name
+  // console.log(name)
+  const day = req.body.days
+  // const emp = await waiterAvailability.getWaiter(name)
+  await waiterAvailability.getWaiter(name)
+  const shiftsIds = await waiterAvailability.getIds(name, day)
 
+      const allSevenDays = await waiterAvailability.allDays()
+  res.render('waiter', {
+    shiftsIds,
+    username: name,
+     allSevenDays
+    // shitftIds
+  })
 })
+
+
+app.get('/waiter/', async (req, res) => {
+  const name = req.params.username;
+//   console.log(name)   //const name=req.bo
+const allSevenDays = await waiterAvailability.allDays()
+
+   res.render('waiter', {
+     username: name,
+     allSevenDays
+
+  })
+ })
+app.get('/days',async (req,res)=>{
+  // const name = req.params.username;
+  const allSevenDays = await waiterAvailability.allDays()
+  const waitersList = await waiterAvailability.showWaiters()
+  res.render('days', {
+    allSevenDays,
+    waitersList
+  })
+})
+app.get('/rest', async (req,res)=>{
+  await waiterAvailability.reset()
+  res.redirect('/')
 })
 
 
@@ -55,20 +86,6 @@ res.render('waiter', {
 // app.get('/waiters/',(req,res)=>{
 //res.render('waiters',)
 
-// });
-app.post('/waiter/:username', async (req, res) => {
-  const name = req.params.username;
-  console.log(name)
-  const day = req.body.days
- // const emp = await waiterAvailability.getWaiter(name)
- await waiterAvailability.getWaiter(name)
-  const shiftsIds = await waiterAvailability.getIds(name, day)
-  res.render('waiter', {
-    shiftsIds
-    // waiters: name,
-    // shitftIds
-  })
-})
 
 
 

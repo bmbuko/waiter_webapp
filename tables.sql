@@ -1,4 +1,4 @@
-create table days_of_the_week(
+create table days_of_the_week (
 	id serial not null primary key,
     day_name text not null
 	 
@@ -11,8 +11,8 @@ create table days_of_the_week(
     
     create table admin (
 	id serial not null primary key,
-    day_name_id int not null,
-    waiter_name_id int not null,
+    day_name_id int,
+    waiter_name_id int,
 foreign key (day_name_id) references days_of_the_week (id),
 foreign key (waiter_name_id) references waiters(id)
 );
