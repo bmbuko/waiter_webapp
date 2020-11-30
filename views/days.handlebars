@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title></title>
 </head>
+
 <body>
-  <table class="table">
-    <thead>
-      {{#each allSevenDays}}
-      <tr>
-        <th>{{this.day_name}}</th>
-        
-        
-      </tr>
-      {{/each}}
-    </thead>
-    <tbody>
-      {{#each waiterList}}
-      <tr>
-        <td>{{this.waiter_name}}</td>
-        
-      </tr>
-      {{/each}}
-     
-      
-    </tbody>
-  </table>
-</div>
+ <table style="width:100%">
+   <thead>
+  <tr>
+    {{#each shift}}
+    <th style="color:{{this.color}}">{{this.day_name}}</th>
+    {{/each}}
+    
+  </tr>
+  </thead>
   
+  <tbody>
+  <tr>
+    {{#each shift}}
+    <td style="color: {{this.color}}">
+      {{#each this.waiter_name}}
+      <ul>
+      <li>{{this.waiter_name}}</li>
+      </ul>
+      {{/each}}
+    </td>
+    {{/each}}
+  </tr>
+  </tbody>
+ 
+</table>
+  <a href='/reset'><button type="button" class="btn">reset</button></a>
+  </div>
+
 </body>
+
 </html>

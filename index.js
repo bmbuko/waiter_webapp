@@ -18,6 +18,7 @@ let app = express()
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 app.get('/waiter/:username', async (req, res) => {
   const name = req.params.username;
   const allSevenDays = await waiterAvailability.allDays()
-  console.log(name)
+  //console.log(name)
 
   res.render('waiter', {
     username: name,
@@ -45,40 +46,37 @@ app.post('/waiter/:username', async (req, res) => {
   // const emp = await waiterAvailability.getWaiter(name)
   await waiterAvailability.getWaiter(name)
   const shiftsIds = await waiterAvailability.getIds(name, day)
-
-      const allSevenDays = await waiterAvailability.allDays()
+   //.log(shiftsIds);
+  const allSevenDays = await waiterAvailability.allDays()
+  
   res.render('waiter', {
     shiftsIds,
     username: name,
-     allSevenDays
+    allSevenDays
     // shitftIds
   })
 })
 
 
-app.get('/waiter/', async (req, res) => {
-  const name = req.params.username;
-//   console.log(name)   //const name=req.bo
-const allSevenDays = await waiterAvailability.allDays()
 
-   res.render('waiter', {
-     username: name,
-     allSevenDays
-
-  })
- })
-app.get('/days',async (req,res)=>{
+app.get('/days', async (req, res) => {
   // const name = req.params.username;
-  const allSevenDays = await waiterAvailability.allDays()
+  //  const allSevenDays = await waiterAvailability.allDays()
   const waitersList = await waiterAvailability.showWaiters()
+   const join = await waiterAvailability.schedules()
+  const shift = await waiterAvailability.namePusher()
+  // console.log({ join 
+  // })
   res.render('days', {
-    allSevenDays,
-    waitersList
+    //  allSevenDays,
+    // waitersList,
+    shift,
+   join
   })
 })
-app.get('/rest', async (req,res)=>{
+app.get('/reset', async (req, res) => {
   await waiterAvailability.reset()
-  res.redirect('/')
+  res.redirect('/days');
 })
 
 
