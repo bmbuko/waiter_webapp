@@ -1,4 +1,6 @@
-
+body{
+  background-image:  url("../images/vv.jpeg"), url("paper.gif");
+}
 .container {
   max-width: 500px;
   margin: auto;
