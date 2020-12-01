@@ -1,13 +1,19 @@
 body{
-  background-image:  url("../images/vv.jpeg"), url("paper.gif");
+  background-image:  url("../images/vv.jpeg");
+padding: 25px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .container {
   max-width: 500px;
   margin: auto;
-  background: white;
-  padding: 20px;
+  color: aliceblue;
+  padding: 25px;
 }
 
 .table, td, th {
   border: 1px solid black;
+}
+.body{
+  background-color: black;
 }
