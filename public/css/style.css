@@ -9,11 +9,9 @@ padding: 25px;
   margin: auto;
   color: aliceblue;
   padding: 25px;
+  background-color: darkgray;
 }
 
 .table, td, th {
   border: 1px solid black;
-}
-.body{
-  background-color: black;
 }
