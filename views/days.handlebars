@@ -25,9 +25,11 @@
     {{#each shift}}
     <td style="color: {{this.color}}">
       {{#each this.waiter_name}}
+      <a href="/waiter"{{this.waiter_name}}>
       <ul>
       <li>{{this.waiter_name}}</li>
       </ul>
+      </a>
       {{/each}}
     </td>
     {{/each}}

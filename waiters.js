@@ -26,11 +26,11 @@ module.exports = function waiter(pool) {
 
 
         var waiterId = waiters.rows[0].id
-        // console.log(waiterId)
+     // console.log(waiterId)
 
-
-        for (var i = 0; i < days.length; i++) {
-            let day = await pool.query('select id from days_of_the_week where day_name =$1', [days[i]])
+const weekDay = Array.isArray(days) ? days : [days]
+        for (var i = 0; i < weekDay.length; i++) {
+            let day = await pool.query('select id from days_of_the_week where day_name =$1', [weekDay[i]])
             var dayId = day.rows[0].id
             //console.log(dayId)
             await pool.query('insert into admin (day_name_id,waiter_name_id) values($1,$2)', [dayId, waiterId])
@@ -69,6 +69,12 @@ module.exports = function waiter(pool) {
             return wkdays;
       
     }
+    async function scheduleWaiter(names){
+        const weekdys =await allDays();
+        const  ids= await getIds()
+        weekdys.forEach(async (days))
+        days.checked ="";
+    }
 
     async function reset() {
         const deleteData = "delete from admin"
@@ -92,7 +98,8 @@ module.exports = function waiter(pool) {
         reset,
         schedules,
        //  getshifts,
-        namePusher
+        namePusher,
+        scheduleWaiter
 
 
     }

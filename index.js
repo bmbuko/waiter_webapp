@@ -38,11 +38,16 @@ app.get('/waiter/:username', async (req, res) => {
 
   })
 })
-// });
+// 
 app.post('/waiter/:username', async (req, res) => {
   const name = req.params.username;
   // console.log(name)
   const day = req.body.days
+//   if(day == "true"){
+// console.log("true")
+//   } else{
+//     console.log("false")
+//   }
   // const emp = await waiterAvailability.getWaiter(name)
   await waiterAvailability.getWaiter(name)
   const shiftsIds = await waiterAvailability.getIds(name, day)
